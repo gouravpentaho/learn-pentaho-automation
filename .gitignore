@@ -1,0 +1,13 @@
+.settings
+reports
+target
+test-output
+.DS_Store
+*.checkstyle
+.idea/
+*.iml
+*.log
+/**/target/
+**.project
+**.classpath
+bin/
