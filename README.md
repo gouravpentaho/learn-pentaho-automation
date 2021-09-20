@@ -21,5 +21,6 @@ Step 6: Go to Line no.52 in PUC_SmokeTest.java file and ensure to update the IP 
     // Launch Website
     driver.navigate().to("http://172.20.42.232:8080/pentaho/Login");
 
-Step 7: In your IDE terminal run - mvn clean test
-(Please ensure that Step1 was performed properly.)
+Step 7: In your IDE terminal run - 'mvn clean test'
+
+(Please ensure that Step1 was performed properly, if facing any issues then cross check Step1 settings again.)
