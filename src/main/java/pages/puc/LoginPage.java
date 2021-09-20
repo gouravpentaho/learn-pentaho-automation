@@ -25,8 +25,6 @@ package pages.puc;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.PageFactory;
 
 /**
@@ -77,6 +75,9 @@ public class LoginPage {
   @FindBy( xpath = "//div[@id='role-business-user-panel']//button[@class='btn']" )
   private WebElement evaluatorGo;
 
+  /**
+   * Constructor where driver is getting initialized.
+   */
   public LoginPage(WebDriver driver) {
     this.driver = driver;
     //This initElements method will create all WebElements
@@ -84,11 +85,10 @@ public class LoginPage {
   }
 
   /**
-   * Login action using the provided username and password
-   *
+   * Login action using the provided username and password while calling the method
    * @param username
    * @param password
-   * @return HomePage
+   * @return True or False
    */
   public boolean login( String username, String password ) {
     if (usernameField.isDisplayed()) {
@@ -96,13 +96,9 @@ public class LoginPage {
       passwordField.click();
       passwordField.sendKeys( password );
       loginButton.click();
-      System.out.println("Logging to PUC");
-      try{
-        Thread.sleep(45000);
-      } catch(InterruptedException ex) {
-        System.out.println("Exception !!" + ex);
-      }
+      return true;
+    } else {
+      return false;
     }
-    return true;
   }
 }

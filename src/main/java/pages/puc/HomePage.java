@@ -25,6 +25,8 @@ package pages.puc;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * This class represents the content on the Home perspective of Pentaho User Console
@@ -68,19 +70,40 @@ public class HomePage {
   @FindBy( xpath = "//div[@class='gwt-Label'][contains(text(),'Release: ')]" )
   private WebElement version;
 
+  /**
+   * Constructor where driver is getting initialized.
+   */
   public HomePage(WebDriver driver) {
     this.driver = driver;
     //This initElements method will create all WebElements
     PageFactory.initElements(driver, this);
   }
 
+  /**
+   * Retrieve the Server version from PUC homepage.
+   * @return True or False
+   */
   public String ServerVersion() {
     String ver = null;
     help.click();
     about.click();
     ver = version.getText();
     return ver.substring(9);
-
   }
 
+  /**
+   * Verify that PUC home page is loading successfully.
+   * @return True or False
+   */
+  public boolean HomePageLoad() {
+    try {
+      // explicit wait - to wait for the Help button to be click-able
+      WebDriverWait wait = new WebDriverWait(driver,60);
+      wait.until(ExpectedConditions.elementToBeClickable(help));
+    } catch(NullPointerException ex) {
+      System.out.println("Exception !!" + ex);
+      return false;
+    }
+    return true;
+  }
 }

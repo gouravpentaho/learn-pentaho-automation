@@ -28,16 +28,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import javax.sound.midi.Soundbank;
-import java.sql.SQLOutput;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertTrue;
 
 /**
- * This is a sample class that demonstrates how we can override the automatic login functionality in order to test the
- * login page.
+ * This is a sample class that demonstrates how we can login to PUC and print the Server version from help -> about.
  */
 public class PUC_SmokeTest {
 
@@ -61,13 +57,20 @@ public class PUC_SmokeTest {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   }
 
+  /**
+   * This Test is executed when mvn test is performed (due to @Test TestNG annotation).
+   */
   @Test
   public void loginPageTest() {
     LoginPage loginPage = new LoginPage(driver);
     HomePage homePage = new HomePage(driver);
-    assertTrue(loginPage.login( "Admin", "password" ), "Login is Successful" );
-    System.out.println("Help -> About -> Server version: " + homePage.ServerVersion());
-
+    if ( loginPage.login( "Admin", "password" ) ) {
+      System.out.println("Login is successful !!");
+      if ( homePage.HomePageLoad() ) {
+        System.out.println("Home page loaded successfully !!");
+        System.out.println("Help -> About -> Server version: " + homePage.ServerVersion());
+      }
+    }
   }
 
   @AfterClass
