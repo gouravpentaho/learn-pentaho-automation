@@ -1,7 +1,7 @@
 # learn-pentaho-automation
 Sandbox for learning Pentaho Automation.
 
-Prerequisites settings to run Selenium tests:
+Prerequisite settings to run Selenium tests:
 
 Step 1: Please follow standard Automation setup steps given on - https://hv-eng.atlassian.net/wiki/spaces/QA/pages/3033041259/Automation+Development+Environment+Setup
 
@@ -20,3 +20,6 @@ Step 6: Go to Line no.52 in PUC_SmokeTest.java file and ensure to update the IP 
 
     // Launch Website
     driver.navigate().to("http://172.20.42.232:8080/pentaho/Login");
+
+Step 7: In your IDE terminal run - mvn clean test
+(Please ensure that Step1 was performed properly.)
