@@ -12,9 +12,11 @@ Step 3: Go to website - http://chromedriver.storage.googleapis.com/index.html an
 Step 4: Keep this file at some location which you can easily refer. (Example: C:\Users\username\driver\chromdriver.exe)
 
 Step 5: Go to line no.46 in PUC_SmokeTest.java file and ensure to update the Chromedriver path as per folder location in your system (as per above step).
+
     //Setting system properties of ChromeDriver
     System.setProperty("webdriver.chrome.driver", "C:\\Users\\gmudgal\\chromedriver\\chromedriver.exe");
 
 Step 6: Go to Line no.52 in PUC_SmokeTest.java file and ensure to update the IP address, to reflect the Pentaho server which is currently running.
+
     // Launch Website
     driver.navigate().to("http://172.20.42.232:8080/pentaho/Login");
